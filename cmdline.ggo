@@ -1,0 +1,67 @@
+package "palz"
+version "1.0"
+purpose "palz"
+description "Tool to compress and decompress palz files."
+
+########################################################################
+section "Decompression modes"
+########################################################################
+
+#-- DEF MODES ----------------------------------------------------------
+
+defmode "Decompress file"
+defmode "Decompress folder"
+defmode "Parallel folder decompress"
+defmode "Compress file"
+defmode "Parallel folder compress"
+defmode "About"
+
+#-- DECOMPRESS FILE ----------------------------------------------------
+
+modeoption "decompress" -
+"decompress .palz file"
+mode="Decompress file" string typestr="file" required
+
+#-- DECOMPRESS FOLDER --------------------------------------------------
+
+modeoption "folder-decompress" -
+"decompress .palz files from a directory"
+mode="Decompress folder" string typestr="folder" required
+
+#-- PARALLEL FOLDER DECOMPRESS -----------------------------------------
+
+modeoption "parallel-folder-decompress" -
+"decompress .palz files from a directory by using threads"
+mode="Parallel folder decompress" string typestr="folder" required
+
+modeoption "decompress-max-threads" -
+"set max threads"
+mode="Parallel folder decompress" int default="1" typestr="nthreads"
+optional
+
+########################################################################
+section "Compression modes"
+########################################################################
+
+#-- COMPRESS FILE ------------------------------------------------------
+
+modeoption "compress" -
+"compress text file"
+mode="Compress file" string typestr="file" required
+
+#-- PARALLEL FOLDER COMPRESS -------------------------------------------
+
+modeoption "parallel-folder-compress" -
+"compress text files from a directory by using threads"
+mode="Parallel folder compress" string typestr="folder" required
+
+modeoption "compress-max-threads" -
+"set max threads"
+mode="Parallel folder compress" int default="1" typestr="nthreads"
+optional
+
+#-- OTHER --------------------------------------------------------------
+
+modeoption "about" -
+"show authors"
+mode="About" required
